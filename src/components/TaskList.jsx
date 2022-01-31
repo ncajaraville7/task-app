@@ -7,7 +7,7 @@ const TaskList = ({ tasks, setTasks}) => {
             tasks.length > 0 ?
 
             tasks.map( task => (
-                <div key={task.id}> <Task task={task}/> </div>
+                <div key={task.id}> <Task task={task} tasks={tasks} setTasks={setTasks}/> </div>
             )) :
             'no hay tareas'
         }

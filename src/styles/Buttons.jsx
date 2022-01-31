@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ButtonAdd = styled.button`
+export const Buttons = styled.button`
     margin-left: 20px;
     border: none;
     outline: none;

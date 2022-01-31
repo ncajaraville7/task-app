@@ -1,7 +1,8 @@
 import { useState } from "react";
 import Error from './Error';
+import { Buttons } from "../styles/Buttons"
 import { InputTask } from "../styles/InputTask";
-import { ButtonAdd } from "../styles/ButtonAdd";
+
 
 const Form = ({ tasks, setTasks}) => {
     
@@ -40,11 +41,7 @@ const Form = ({ tasks, setTasks}) => {
                             onChange={ e => setTask(e.target.value)} 
                         />
 
-                        <ButtonAdd 
-                            type="submit"
-                        >
-                            Agregar Tarea
-                        </ButtonAdd>
+                        <Buttons type="submit"> Agregar Tarea </Buttons>
                 </div>
             </form>
 
