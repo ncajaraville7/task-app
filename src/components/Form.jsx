@@ -13,7 +13,6 @@ const Form = ({ tasks, setTasks, editTask}) => {
     useEffect( ()=> {
         if(Object.keys(editTask).length > 0) {
             setTask(editTask.task)
-            console.log(editTask.id)
             return;
         }
     }, [editTask])
@@ -37,7 +36,6 @@ const Form = ({ tasks, setTasks, editTask}) => {
 
           const taskUpdate = tasks.map( taskState => taskState.id === editTask.id ? objTask : taskState);
           setTasks(taskUpdate)
-          console.log(taskUpdate)
 
       } else {
           objTask.id = Date.now();
@@ -62,7 +60,8 @@ const Form = ({ tasks, setTasks, editTask}) => {
                         />
 
                         <Buttons 
-                            type="submit"> { editTask.id ? 'Editar Tarea' : 'Agregar Tarea' } </Buttons>
+                            type="submit"> { editTask.id ? 'Editar Tarea' : 'Agregar Tarea' } 
+                        </Buttons>
                 </div>
             </form>
 

@@ -6,4 +6,5 @@ export const InputTask = styled.input`
     border: none;
     box-shadow: 1px 0px 2px 0px rgb(0 0 0 / 51%);
     outline: none;
+    margin-top: 20px;
 `
