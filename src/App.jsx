@@ -6,6 +6,7 @@ import { Container } from './styles/Container';
 function App() {
 
   const [ tasks, setTasks ] = useState([]);
+  const [ editTask, setEditTask ] = useState({});
 
   return (
     <Container>
@@ -13,10 +14,12 @@ function App() {
       <Form
         tasks={tasks}
         setTasks={setTasks}
+        editTask={editTask}
       />
       <TaskList
         tasks={tasks}
         setTasks={setTasks}
+        setEditTask={setEditTask}
       />
     </Container>
   )

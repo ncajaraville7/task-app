@@ -1,11 +1,16 @@
 import { TaskDiv } from "../styles/TaskDiv";
 import { Buttons } from "../styles/Buttons";
 
-const Task = ({task, tasks, setTasks}) => {
+const Task = ({task, tasks, setTasks, setEditTask}) => {
 
     const deleteTask = id => {
-        const taskDelete = tasks.filter( task => task.id !== id);
-        setTasks(taskDelete)
+        const confirmTaskDelete = confirm('Estas segur@ que deseas eliminar la tarea ?');
+        if(confirmTaskDelete) {
+            const taskDelete = tasks.filter( task => task.id !== id);
+            setTasks(taskDelete)
+            return;
+        }
+        
     }
 
   return (
@@ -13,7 +18,8 @@ const Task = ({task, tasks, setTasks}) => {
         <p>{task.task}</p>
         <div>
             <Buttons type="button">Finalizar</Buttons>
-            <Buttons type="button" onClick={() => deleteTask(task.id)}>Borrar</Buttons>
+            <Buttons type="button" onClick={ () => setEditTask(task) }>Editar</Buttons>
+            <Buttons type="button" onClick={ () => deleteTask(task.id) }>Borrar</Buttons>
         </div>
     </TaskDiv>
     );

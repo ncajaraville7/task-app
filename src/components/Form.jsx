@@ -1,17 +1,26 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Error from './Error';
 import { Buttons } from "../styles/Buttons"
 import { InputTask } from "../styles/InputTask";
 
 
-const Form = ({ tasks, setTasks}) => {
+const Form = ({ tasks, setTasks, editTask}) => {
     
     const [ task, setTask] = useState('');
     const [ error, setError ] = useState(false);
+
+    //Detectamos cambios al dar click en editar y si hay algo para editar
+    useEffect( ()=> {
+        if(Object.keys(editTask).length > 0) {
+            setTask(editTask.task)
+            console.log(editTask.id)
+            return;
+        }
+    }, [editTask])
     
     const handleSubmit = e => {
       e.preventDefault();
-      console.log(task)
+
       if(!task) {
           setError(true);
           return;
@@ -20,11 +29,21 @@ const Form = ({ tasks, setTasks}) => {
       setError(false);
 
       const objTask = {
-          id: Date.now(),
           task
       }
 
-      setTasks([...tasks, objTask]);
+      if(editTask.id) {
+          objTask.id = editTask.id;
+
+          const taskUpdate = tasks.map( taskState => taskState.id === editTask.id ? objTask : taskState);
+          setTasks(taskUpdate)
+          console.log(taskUpdate)
+
+      } else {
+          objTask.id = Date.now();
+          setTasks([...tasks, objTask]);
+      }
+
       setTask('');
     }
 
@@ -37,11 +56,13 @@ const Form = ({ tasks, setTasks}) => {
                         <InputTask 
                             type="text" 
                             id="task"
+                            autoFocus
                             value={task}
                             onChange={ e => setTask(e.target.value)} 
                         />
 
-                        <Buttons type="submit"> Agregar Tarea </Buttons>
+                        <Buttons 
+                            type="submit"> { editTask.id ? 'Editar Tarea' : 'Agregar Tarea' } </Buttons>
                 </div>
             </form>
 
