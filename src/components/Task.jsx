@@ -1,11 +1,8 @@
-import { useState } from "react";
 import { TaskDiv } from "../styles/TaskDiv";
 import { Buttons } from "../styles/Buttons";
 import { Finish } from "../styles/Finish";
 
-const Task = ({task, tasks, setTasks, setEditTask}) => {
-
-    const [ taskFinished, setTaskFinished] = useState(false);
+const Task = ({task, tasks, setTasks, setEditTask, isFinished, setIsFinished }) => {
 
     const deleteTask = id => {
         const confirmTaskDelete = confirm('Estas segur@ que deseas eliminar la tarea ?');
@@ -16,22 +13,13 @@ const Task = ({task, tasks, setTasks, setEditTask}) => {
         }
     }
 
-    // const finish = () => {
-    //     if(!taskFinished) {
-    //         setTaskFinished(true)
-    //         return
-    //     }
-
-    //     setTaskFinished(false)
-    // }
-
   return (
     <TaskDiv>
         <p>{task.task}</p>
         <div>
-            { taskFinished && <Finish>Finalizada</Finish>}
-            { !taskFinished && <Buttons type="button" onClick={ () => setTaskFinished(true) }>Finalizar</Buttons>}
-            { !taskFinished &&  <Buttons type="button" onClick={ () => setEditTask(task) }>Editar</Buttons>}
+            { isFinished && <Finish>Finalizado</Finish>}
+            { !isFinished ? <Buttons type="button" onClick={ () => setIsFinished(true) }>Finalizar</Buttons> : '' }
+            { !isFinished ? <Buttons type="button" onClick={ () => setEditTask(task) }>Editar</Buttons> : '' }
             <Buttons type="button" onClick={ () => deleteTask(task.id) }>Borrar</Buttons>
         </div>
     </TaskDiv>

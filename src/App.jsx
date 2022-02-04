@@ -9,6 +9,8 @@ function App() {
   const [ tasks, setTasks ] = useState([]);
   const [ editTask, setEditTask ] = useState({});
 
+  const [ isFinished, setIsFinished ] = useState(false);
+
   useEffect( () => {
     const getLocalStorage = () => {
       const taskLocalStorage = JSON.parse(localStorage.getItem('tasks')) || [];
@@ -29,11 +31,15 @@ function App() {
         tasks={tasks}
         setTasks={setTasks}
         editTask={editTask}
+        setEditTask={setEditTask}
+        isFinished={isFinished}
       />
       <TaskList
         tasks={tasks}
         setTasks={setTasks}
         setEditTask={setEditTask}
+        isFinished={isFinished}
+        setIsFinished={setIsFinished}
       />
     </Container>
   )
