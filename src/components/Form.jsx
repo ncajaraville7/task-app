@@ -4,7 +4,7 @@ import { Buttons } from "../styles/Buttons"
 import { InputTask } from "../styles/InputTask";
 
 
-const Form = ({ tasks, setTasks, editTask, setEditTask, isFinished }) => {
+const Form = ({ tasks, setTasks, editTask, isFinished}) => {
     
     const [ task, setTask] = useState('');
     const [ error, setError ] = useState(false);
@@ -36,8 +36,7 @@ const Form = ({ tasks, setTasks, editTask, setEditTask, isFinished }) => {
           objTask.id = editTask.id;
 
           const taskUpdate = tasks.map( taskState => taskState.id === editTask.id ? objTask : taskState);
-          setTasks(taskUpdate);
-          setEditTask({});
+          setTasks(taskUpdate)
 
       } else {
           objTask.id = Date.now();

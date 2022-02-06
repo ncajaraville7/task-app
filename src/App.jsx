@@ -38,8 +38,6 @@ function App() {
         tasks={tasks}
         setTasks={setTasks}
         setEditTask={setEditTask}
-        isFinished={isFinished}
-        setIsFinished={setIsFinished}
       />
     </Container>
   )

@@ -1,7 +1,7 @@
 import Task from "./Task";
 import { NoTasks } from "../styles/NoTasks";
 
-const TaskList = ({ tasks, setTasks, setEditTask, setIsFinished, isFinished }) => {
+const TaskList = ({ tasks, setTasks, setEditTask }) => {
   return (
       <>
         {
@@ -14,8 +14,6 @@ const TaskList = ({ tasks, setTasks, setEditTask, setIsFinished, isFinished }) =
                     tasks={tasks} 
                     setTasks={setTasks}
                     setEditTask={setEditTask}
-                    isFinished={isFinished}
-                    setIsFinished={setIsFinished}
                   /> 
                 </div>
             )) : <NoTasks>No hay tareas</NoTasks>
